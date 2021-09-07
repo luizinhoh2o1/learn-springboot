@@ -24,9 +24,11 @@ public class ProductService {
 		return obj.get();
 	}
 	
+	/*
 	public List<Product> findByCategory(Long id) {
 		return findAll().stream().filter((product) -> {
 			return product.getCategory().getId().equals(id); 
 		}).toList();
 	}
+	*/
 }

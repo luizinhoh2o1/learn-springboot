@@ -14,7 +14,7 @@ import com.learnwebservices.learn.services.ProductService;
 
 @RestController
 @RequestMapping(value = "/products")
-public class ProductResources {
+public class ProductResource {
 	
 	@Autowired
 	private ProductService service;
@@ -31,10 +31,11 @@ public class ProductResources {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	/*
 	@GetMapping(value = "/category/{id}")
 	public ResponseEntity<List<Product>> findByCategory(@PathVariable Long id) {
 		List<Product> obj = service.findByCategory(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+	*/
 }

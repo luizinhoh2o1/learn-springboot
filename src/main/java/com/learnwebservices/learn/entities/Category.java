@@ -1,14 +1,21 @@
 package com.learnwebservices.learn.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "tb_category")
 public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -17,6 +24,10 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "categories")
+	private Set<Product> products = new HashSet<>();
 	
 	public Category () {
 		
@@ -30,6 +41,11 @@ public class Category implements Serializable{
 	public Long getId() {
 		return id;
 	}
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -61,5 +77,5 @@ public class Category implements Serializable{
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + "]";
 	}
-	
+
 }
